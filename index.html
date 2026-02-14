@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ko Jika Tournament Registration</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0041a5 0%, #0055c8 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #0041a5 0%, #0055c8 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 1.1em;
+      opacity: 0.95;
+    }
+    
+    .content {
+      padding: 40px 30px;
+    }
+    
+    .warning-box {
+      background: #fff3cd;
+      border-left: 4px solid #ff9800;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 4px;
+    }
+    
+    .warning-box h2 {
+      color: #856404;
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .warning-icon {
+      font-size: 1.5em;
+    }
+    
+    .instructions {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    
+    .instructions h3 {
+      color: #0041a5;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+    
+    .instructions ol {
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+    
+    .instructions li {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .instructions strong {
+      color: #0041a5;
+    }
+    
+    .copy-section {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    
+    .copy-section p {
+      margin-bottom: 10px;
+      color: #555;
+      font-size: 0.95em;
+    }
+    
+    .url-input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #0041a5;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.9em;
+      background: white;
+      cursor: pointer;
+    }
+    
+    .url-input:focus {
+      outline: none;
+      border-color: #0055c8;
+      box-shadow: 0 0 0 3px rgba(0, 65, 165, 0.1);
+    }
+    
+    .continue-button {
+      display: block;
+      width: 100%;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #0041a5 0%, #0055c8 100%);
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 65, 165, 0.3);
+    }
+    
+    .continue-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 65, 165, 0.4);
+    }
+    
+    .continue-button:active {
+      transform: translateY(0);
+    }
+    
+    .desktop-message {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      padding: 20px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    
+    .desktop-message p {
+      color: #2e7d32;
+      margin-bottom: 15px;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      font-size: 0.9em;
+      border-top: 1px solid #eee;
+    }
+    
+    .footer a {
+      color: #0041a5;
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 1.5em;
+      }
+      
+      .content {
+        padding: 30px 20px;
+      }
+      
+      .instructions ol {
+        margin-left: 15px;
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Ko Jika Tournament</h1>
+      <p>Registration Form</p>
+    </div>
+    
+    <div class="content" id="content">
+      <!-- Content will be inserted by JavaScript -->
+    </div>
+    
+    <div class="footer">
+      <p>For questions, visit <a href="https://www.kojika.be" target="_blank">www.kojika.be</a></p>
+    </div>
+  </div>
+
+  <script>
+    // IMPORTANT: Replace this URL with your actual Google Apps Script web app URL
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzNORmuF2paSk9nSSYolme25DYExArxTu8fd5CuhofgxNRTJkF-koG8UQFpQW7Npyut/exec';
+    
+    // Detect browser and device
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    var isFacebookApp = (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) || (ua.indexOf("FB_IAB") > -1);
+    var isIOS = /iPhone|iPad|iPod/.test(ua);
+    var isAndroid = /Android/.test(ua);
+    
+    var contentDiv = document.getElementById('content');
+    
+    if (isFacebookApp && isIOS) {
+      // Facebook in-app browser on iOS - Show instructions
+      contentDiv.innerHTML = `
+        <div class="warning-box">
+          <h2><span class="warning-icon">⚠️</span> iPhone Users</h2>
+          <p>The registration form won't work in Facebook's browser. Please follow these steps to open it in Safari:</p>
+        </div>
+        
+        <div class="instructions">
+          <h3>How to Open in Safari:</h3>
+          <ol>
+            <li>Look at the <strong>bottom right</strong> of your screen</li>
+            <li>Tap the <strong>three dots (•••)</strong> icon</li>
+            <li>Select <strong>"Open in Safari"</strong> or <strong>"Open in Browser"</strong></li>
+          </ol>
+        </div>
+        
+        <div class="copy-section">
+          <p><strong>Alternative:</strong> Copy this link and paste it in Safari:</p>
+          <input 
+            type="text" 
+            class="url-input" 
+            value="${GAS_URL}" 
+            readonly 
+            onclick="this.select(); document.execCommand('copy'); alert('Link copied! Now open Safari and paste it.');"
+          >
+        </div>
+      `;
+      
+    } else if (isFacebookApp && isAndroid) {
+      // Facebook in-app browser on Android - Usually works, but offer external option
+      contentDiv.innerHTML = `
+        <div class="desktop-message">
+          <p><strong>Redirecting you to the registration form...</strong></p>
+          <p>If the page doesn't load, tap the three dots and select "Open in external browser".</p>
+        </div>
+        <a href="${GAS_URL}" class="continue-button">Continue to Registration</a>
+      `;
+      
+      // Auto-redirect after 2 seconds
+      setTimeout(function() {
+        window.location.href = GAS_URL;
+      }, 2000);
+      
+    } else {
+      // Normal browser - redirect immediately
+      contentDiv.innerHTML = `
+        <div class="desktop-message">
+          <p><strong>Redirecting you to the registration form...</strong></p>
+        </div>
+        <a href="${GAS_URL}" class="continue-button">Continue to Registration</a>
+      `;
+      
+      // Auto-redirect immediately
+      setTimeout(function() {
+        window.location.href = GAS_URL;
+      }, 500);
+    }
+  </script>
+</body>
+</html>
